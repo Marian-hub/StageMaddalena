@@ -1,12 +1,20 @@
 # BACKED STRUCTURE 
 
 # API ROUTES
-
 ```javascript
-
-route.get('/getMeeting')
-route.post('/createMeeting')
-route.post('/updateMeeting')
-router.delete('/deleteMeeting')
-
+get('/getMeeting')
 ```
+If no Date query parameter given the route will get all the meetings
+With date query parameter the route will get the meeting with that Date<br/>
+```javascript
+post('/createMeeting')
+```
+Creates meeting <br/>
+```javascript
+post('/updateMeeting')
+```
+Updates Meeting <br/>
+```javascript
+delete('/deleteMeeting')
+```
+Deletes Meeting by the Data query parameter given
