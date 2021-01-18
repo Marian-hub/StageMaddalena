@@ -1,7 +1,7 @@
 const Meeting = require('../../models/Meeting')
 
 const getMeeting = (req, res, next) => {
-    const { Date } = req.params
+    const { Date } = req.query
     if (typeof Date === "undefined") {
         Meeting.find({}, (err, docs) => {
             if (err) { return res.status(500) }

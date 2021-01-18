@@ -7,5 +7,5 @@ const databaseConnection = mongoose.connect(process.env.DATABASE_URL, { useNewUr
         return err
     }
     console.log("CONNECTED TO welcomeGuestsDatabase")
-}, { 'useFindAndModify': false })
+})
 module.exports = databaseConnection
