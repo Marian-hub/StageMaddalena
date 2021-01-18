@@ -4,7 +4,7 @@
 ```javascript
 get('/getMeeting')
 ```
-If no Date query parameter given the route will get all the meetings
+If no Date query parameter given the route will get all the meetings<br/>
 With date query parameter the route will get the meeting with that Date<br/>
 ```javascript
 post('/createMeeting')
