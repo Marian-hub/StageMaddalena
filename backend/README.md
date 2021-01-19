@@ -1,5 +1,3 @@
-# BACKED STRUCTURE 
-
 # API ROUTES
 ```javascript
 get('/getMeeting')
