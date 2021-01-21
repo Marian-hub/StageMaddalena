@@ -1,6 +1,10 @@
 import React, { Component } from 'react'
 import axios from 'axios'
-import Meetings from './Meetings'
+import {
+    Button,
+    Label,
+    Form
+} from 'reactstrap'
 class CreateMeeting extends Component {
     constructor() {
         super()
@@ -38,12 +42,13 @@ class CreateMeeting extends Component {
         axios.post("http://localhost:5000/createMeeting", {
             date: date,
             guests: guests
-        }).then(response => {
-           console.log(response)
         }).catch(err => {
             if (err) {
                 return err
             }
+        })
+        this.setState({
+            clickedState: false
         })
     }
     handleInputChange = (e, index) => {
@@ -87,16 +92,18 @@ class CreateMeeting extends Component {
                                     </input>
                                     <div>
                                         {
-                                            <button
+                                            <Button
+                                                color="success"
                                                 onClick={() => this.handleAddClick()}
                                             >Add
-                                        </button>
+                                            </Button>
                                         }
                                         {
-                                            guests.length -1  !==0 && <button
+                                            guests.length - 1 !== 0 &&
+                                            <Button color="danger"
                                                 onClick={() => this.handleRemove(index)}
                                             >Remove
-                                        </button>
+                                            </Button>
                                         }
                                     </div>
                                 </div>
@@ -104,24 +111,30 @@ class CreateMeeting extends Component {
                         })}
                     </div>
                     <div>
-                    <button
-                    onClick={()=>{this.setState({
-                        clickedState:!clickedState
-                    })}}
-                    >create meeting
-                    </button>
-                </div>
-                </div>
+                        <Button
+                            color="dark"
+                            onClick={() => {
+                                this.setState({
+                                    clickedState: !clickedState
+                                })
+                            }}
+                        >create meeting
+                    </Button>
+                    </div>
+                </div >
             )
         } else {
             return (
                 <div>
-                    <button
-                    onClick={()=>{this.setState({
-                        clickedState:!clickedState
-                    })}}
+                    <Button
+                        color="dark"
+                        onClick={() => {
+                            this.setState({
+                                clickedState: !clickedState
+                            })
+                        }}
                     >create meeting
-                    </button>
+                    </Button>
                 </div>
             )
         }

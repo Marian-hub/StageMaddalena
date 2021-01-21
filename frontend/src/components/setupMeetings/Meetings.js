@@ -22,19 +22,24 @@ class Meetings extends Component {
     }
     componentDidMount() {
         this.getMeetings()
+
     }
     render() {
-        const {meetings} = this.state
+        const { meetings } = this.state
         return (
             <div>
                 {meetings.map((meeting, index) => {
-                    return <Meeting
-                        key={index}
-                        date={meeting.date}
-                        guests={meeting.guests}
-                    />
+                    return (
+                        <div key={index}>
+                            <Meeting
+                                date={meeting.date}
+                                guests={meeting.guests}
+                            />
+                        </div>
+                    )
                 })}
-                <CreateMeeting/>
+                {this.getMeetings()}
+                <CreateMeeting />
             </div>
         )
     }
