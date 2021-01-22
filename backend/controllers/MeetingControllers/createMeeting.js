@@ -9,7 +9,7 @@ const createMeeting = (req, res, next) => {
         logo: logo,
     }, (error, document) => {
         if (error) { return res.status(500) }
-        return res.send(document)
+        return res.status(200).send(document)
     })
 }
 

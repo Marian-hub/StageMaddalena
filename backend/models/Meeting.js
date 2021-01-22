@@ -7,6 +7,10 @@ const MeetingSchema = new Schema({
         type: Date,
         required: true
     },
+    guestCompanyName: {
+        type: String,
+        required: true
+    },
     guests: {
         type: Array,
         required: true,
@@ -18,6 +22,11 @@ const MeetingSchema = new Schema({
     logo: {
         type: String,
         required: true
+    },
+    displayState: {
+        type: Boolean,
+        required: false,
+        default: false
     }
 })
 const Meeting = mongoose.model('Meeting', MeetingSchema)
