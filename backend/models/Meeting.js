@@ -14,8 +14,11 @@ const MeetingSchema = new Schema({
             type: String,
             required: true
         }
+    },
+    logo: {
+        type: String,
+        required: true
     }
-
 })
 const Meeting = mongoose.model('Meeting', MeetingSchema)
 module.exports = Meeting

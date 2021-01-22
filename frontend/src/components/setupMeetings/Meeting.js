@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import DeleteMeeting from './DeleteMeeting'
+import {
+    Label
+} from 'reactstrap'
+
 class Meeting extends Component {
     constructor(props) {
         super(props)
@@ -28,21 +32,23 @@ class Meeting extends Component {
         if (clicked) {
             return (
                 <div>
-                    <label
+                    <Label
+                        color="danger"
                         onClick={() => {
                             this.setState({
                                 clicked: !clicked
                             })
                         }}
                     >DATE:{date} guest number : {guests.length}
-                    </label>
+                    </Label>
                     {this.renderGuests()}
                 </div>
             )
         } else {
             return (
                 <div>
-                    <label
+                    <Label
+                        color="danger"
                         onClick={() => {
                             this.setState({
                                 clicked: !clicked
@@ -50,7 +56,7 @@ class Meeting extends Component {
                         }}
                     >DATE:{date} guest number : {guests.length}
 
-                    </label>
+                    </Label>
                 </div>
             )
         }

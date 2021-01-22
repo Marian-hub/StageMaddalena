@@ -2,15 +2,16 @@ import React, { Component } from 'react'
 import axios from 'axios'
 import {
     Button,
-    Label,
     Form
 } from 'reactstrap'
+import Basic from './ImageDragDrop'
 class CreateMeeting extends Component {
     constructor() {
         super()
         this.state = {
             date: " ",
             guests: [" "],
+            logo: ' ',
             clickedState: false
         }
     }
@@ -38,10 +39,15 @@ class CreateMeeting extends Component {
     }
     handleSubmit = (e) => {
         e.preventDefault()
-        const { date, guests } = this.state
+        const { date, guests, logo } = this.state
+        const fd = new FormData()
+        fd.append('image', this.state.logo)
         axios.post("http://localhost:5000/createMeeting", {
             date: date,
-            guests: guests
+            guests: guests,
+            logo: logo,
+        }).then(response => {
+            console.log(response)
         }).catch(err => {
             if (err) {
                 return err
@@ -59,6 +65,12 @@ class CreateMeeting extends Component {
             guests: list
         })
     };
+    hanelFileSelection = e => {
+        console.log(e.target.files[0])
+        this.setState({
+            logo: e.target.files[0]
+        })
+    }
     render() {
         const { date, guests, clickedState } = this.state
         if (clickedState) {
@@ -92,6 +104,7 @@ class CreateMeeting extends Component {
                                     </input>
                                     <div>
                                         {
+
                                             <Button
                                                 color="success"
                                                 onClick={() => this.handleAddClick()}
@@ -110,6 +123,7 @@ class CreateMeeting extends Component {
                             )
                         })}
                     </div>
+                    <Basic></Basic>
                     <div>
                         <Button
                             color="dark"
